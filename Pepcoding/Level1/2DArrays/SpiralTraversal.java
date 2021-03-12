@@ -3,21 +3,9 @@
 Sample Input
 3
 5
-11
-12
-13
-14
-15
-21
-22
-23
-24
-25
-31
-32
-33
-34
-35
+11 12 13 14 15
+21 22 23 24 25
+31 32 33 34 35
 
 Sample Output
 11
@@ -43,7 +31,7 @@ import java.util.*;
 public class Main {
 
   public static void main(String[] args) {
-    
+
     Scanner s = new Scanner(System.in);
 
     int m = s.nextInt();
@@ -67,29 +55,29 @@ public class Main {
     while (count < limit) {
 
       // left wall
-      for (int i = minRow, j = minCol; i <= maxRow && count < limit; i++) {
-        System.out.println(arr[i][j]);
+      for (int i = minRow; i <= maxRow && count < limit; i++) {
+        System.out.println(arr[i][minCol]);
         count++;
       }
       minCol++;
 
       // bottom wall
-      for (int i = maxRow, j = minCol; j <= maxCol && count < limit; j++) {
-        System.out.println(arr[i][j]);
+      for (int j = minCol; j <= maxCol && count < limit; j++) {
+        System.out.println(arr[maxRow][j]);
         count++;
       }
       maxRow--;
 
       // right wall
-      for (int i = maxRow, j = maxCol; i >= minRow && count < limit; i--) {
-        System.out.println(arr[i][j]);
+      for (int i = maxRow; i >= minRow && count < limit; i--) {
+        System.out.println(arr[i][maxCol]);
         count++;
       }
       maxCol--;
 
       // top wall
-      for (int i = minRow, j = maxCol; j >= minCol && count < limit; j--) {
-        System.out.println(arr[i][j]);
+      for (int j = maxCol; j >= minCol && count < limit; j--) {
+        System.out.println(arr[minRow][j]);
         count++;
       }
       minRow++;

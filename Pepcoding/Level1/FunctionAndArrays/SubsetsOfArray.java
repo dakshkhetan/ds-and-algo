@@ -24,8 +24,8 @@ public class Main {
 
   public static void main(String[] args) {
     Scanner s = new Scanner(System.in);
+    
     int n = s.nextInt();
-
     int arr[] = new int[n];
     for (int i = 0; i < n; i++) {
       arr[i] = s.nextInt();
@@ -41,9 +41,9 @@ public class Main {
         int r = num % 2;
 
         if (r == 0) {
-          subset = "-" + "	" + subset;
+          subset = "-" + "	" + subset; // important
         } else {
-          subset = arr[j] + "	" + subset;
+          subset = arr[j] + "	" + subset; // important
         }
 
         num /= 2;
@@ -52,4 +52,5 @@ public class Main {
       System.out.println(subset);
     }
   }
+  
 }

@@ -1,43 +1,12 @@
-/* 
+/*
 
 Sample Input
-5
-7
-11
-12
-13
-14
-15
-16
-17
-21
-22
-23
-24
-25
-26
-27
-31
-32
-33
-34
-35
-36
-37
-41
-42
-43
-44
-45
-46
-47
-51
-52
-53
-54
-55
-56
-57
+5 7
+11 12 13 14 15 16 17
+21 22 23 24 25 26 27
+31 32 33 34 35 36 37
+41 42 43 44 45 46 47
+51 52 53 54 55 56 57
 2
 3
 
@@ -55,7 +24,6 @@ import java.util.*;
 public class Main {
 
   public static void main(String[] args) {
-
     Scanner s = new Scanner(System.in);
 
     int m = s.nextInt();
@@ -73,7 +41,6 @@ public class Main {
 
     shellRotate(arr, shell, rotation);
     display(arr);
-
   }
 
   public static void shellRotate(int[][] arr, int shell, int rotation) {
@@ -88,8 +55,7 @@ public class Main {
     int maxRow = arr.length - shell;
     int maxCol = arr[0].length - shell;
 
-    // shellSize = topWallElements + bottomWallElements + leftWallElements +
-    // rightWallElements - allCornerElements
+    // shellSize = topWallElements + bottomWallElements + leftWallElements + rightWallElements - allCornerElements
     // int shellSize = 2 * (maxRow - minRow + 1) + 2 * (maxCol - minCol + 1) - 4;
     int shellSize = 2 * (maxRow - minRow + maxCol - minCol);
 
@@ -97,26 +63,26 @@ public class Main {
     int index = 0;
 
     // left wall
-    for (int i = minRow, j = minCol; i <= maxRow; i++) {
-      oneDArray[index] = arr[i][j];
+    for (int i = minRow; i <= maxRow; i++) {
+      oneDArray[index] = arr[i][minCol];
       index++;
     }
 
     // bottom wall
-    for (int i = maxRow, j = minCol + 1; j <= maxCol; j++) {
-      oneDArray[index] = arr[i][j];
+    for (int j = minCol + 1; j <= maxCol; j++) {
+      oneDArray[index] = arr[maxRow][j];
       index++;
     }
 
     // right wall
-    for (int i = maxRow - 1, j = maxCol; i >= minRow; i--) {
-      oneDArray[index] = arr[i][j];
+    for (int i = maxRow - 1; i >= minRow; i--) {
+      oneDArray[index] = arr[i][maxCol];
       index++;
     }
 
     // top wall
-    for (int i = minRow, j = maxCol - 1; j >= minCol + 1; j--) {
-      oneDArray[index] = arr[i][j];
+    for (int j = maxCol - 1; j >= minCol + 1; j--) {
+      oneDArray[index] = arr[minRow][j];
       index++;
     }
 
@@ -131,26 +97,26 @@ public class Main {
     int index = 0;
 
     // left wall
-    for (int i = minRow, j = minCol; i <= maxRow; i++) {
-      arr[i][j] = oneDArray[index];
+    for (int i = minRow; i <= maxRow; i++) {
+      arr[i][minCol] = oneDArray[index];
       index++;
     }
 
     // bottom wall
-    for (int i = maxRow, j = minCol + 1; j <= maxCol; j++) {
-      arr[i][j] = oneDArray[index];
+    for (int j = minCol + 1; j <= maxCol; j++) {
+      arr[maxRow][j] = oneDArray[index];
       index++;
     }
 
     // right wall
-    for (int i = maxRow - 1, j = maxCol; i >= minRow; i--) {
-      arr[i][j] = oneDArray[index];
+    for (int i = maxRow - 1; i >= minRow; i--) {
+      arr[i][maxCol] = oneDArray[index];
       index++;
     }
 
     // top wall
-    for (int i = minRow, j = maxCol - 1; j >= minCol + 1; j--) {
-      arr[i][j] = oneDArray[index];
+    for (int j = maxCol - 1; j >= minCol + 1; j--) {
+      arr[minRow][j] = oneDArray[index];
       index++;
     }
   }
