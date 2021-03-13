@@ -1,21 +1,23 @@
-import java.util.*;
-
 /*
 
-Input:
+Reference Video - https://youtu.be/39SKIuA-ieY
+
+Sample Input
 abc
 
-Output:
+Sample Output
 abc
 bac
 cab
 acb
 bca
-cba 
+cba
 
 */
 
-public class PrintAllPermutations {
+import java.util.*;
+
+public class Main {
 
   public static void printAllPermutations(String str) {
     int n = str.length();
@@ -23,18 +25,18 @@ public class PrintAllPermutations {
 
     for (int i = 0; i < limit; i++) {
       StringBuilder sb = new StringBuilder(str);
-      int temp = i;
+      int num = i;
       for (int div = n; div >= 1; div--) {
-        int index = temp % div;
+        int index = num % div;
+        num /= div;
         System.out.print(sb.charAt(index));
         sb.deleteCharAt(index);
-        temp /= div;
       }
       System.out.println();
     }
   }
 
-  public static int factorial(int n) {
+  private static int factorial(int n) {
     int fact = 1;
     while (n > 0) {
       fact *= n;
@@ -46,6 +48,7 @@ public class PrintAllPermutations {
   public static void main(String[] args) {
     Scanner s = new Scanner(System.in);
     String str = s.next();
+
     printAllPermutations(str);
   }
 

@@ -1,6 +1,16 @@
+/* 
+
+Sample Input
+pepCODinG
+
+Sample Output
+PEPcodINg
+
+*/
+
 import java.util.*;
 
-class ToggleCase {
+public class Main {
 
   public static String toggleCase(String str) {
     // formula :: upperCaseLetter - 'A' = lowerCaseLetter - 'a'
@@ -27,6 +37,7 @@ class ToggleCase {
   public static void main(String[] args) {
     Scanner s = new Scanner(System.in);
     String str = s.next();
+
     System.out.println(toggleCase(str));
   }
 
