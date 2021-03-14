@@ -1,12 +1,10 @@
 /*
 
+Reference Video - https://youtu.be/fnbImb8lo88
+
 Sample Input
 5
-7 
--2 
-4 
-1 
-3
+7 -2 4 1 3
 3
 
 Sample Output
@@ -27,10 +25,10 @@ public class Main {
     int pivot = arr[end];
     int pivotIndex = partition(arr, pivot, start, end);
 
-    if (k > pivotIndex) {
-      return quickSelect(arr, pivotIndex + 1, end, k);
-    } else if (k < pivotIndex) {
+    if (k < pivotIndex) {
       return quickSelect(arr, start, pivotIndex - 1, k);
+    } else if (k > pivotIndex) {
+      return quickSelect(arr, pivotIndex + 1, end, k);
     } else {
       return pivot;
     }
@@ -74,11 +72,10 @@ public class Main {
     System.out.println();
   }
 
-  public static void main(String[] args) throws Exception {
+  public static void main(String[] args) {
     Scanner s = new Scanner(System.in);
 
     int n = s.nextInt();
-
     int[] arr = new int[n];
     for (int i = 0; i < n; i++) {
       arr[i] = s.nextInt();
@@ -86,7 +83,7 @@ public class Main {
 
     int k = s.nextInt();
 
-    int element = quickSelect(arr, 0, n - 1, k - 1);
+    int element = quickSelect(arr, 0, n - 1, k - 1); // passing k-1 (index)
     System.out.println(element);
   }
 

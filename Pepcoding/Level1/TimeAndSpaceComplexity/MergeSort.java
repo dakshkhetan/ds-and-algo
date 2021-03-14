@@ -2,11 +2,7 @@
 
 Sample Input:
 5
-7 
--2 
-4 
-1 
-3
+7 -2 4 1 3
 
 Sample Output:
 Merging these two arrays 

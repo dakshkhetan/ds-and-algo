@@ -31,7 +31,7 @@ public class Main {
   public static boolean isQueenSafe(int[][] chess, int row, int col) {
     // check upward/forward path
     for (int i = row - 1, j = col; i >= 0; i--) {
-      if (chess[i][j] == 1) {
+      if (chess[i][] == 1) {
         return false;
       }
     }

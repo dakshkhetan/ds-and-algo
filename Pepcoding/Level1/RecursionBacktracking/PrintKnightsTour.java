@@ -2,8 +2,7 @@
 
 Sample Input
 5
-2
-0
+2 0
 
 Sample Output
 25 2 13 8 23 
@@ -396,6 +395,7 @@ public class Main {
 
   public static void main(String[] args) {
     Scanner s = new Scanner(System.in);
+
     int n = s.nextInt();
     int row = s.nextInt();
     int col = s.nextInt();

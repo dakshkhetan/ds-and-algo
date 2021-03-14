@@ -1,12 +1,10 @@
 /*
 
+Reference Video - https://youtu.be/p-OyKUgIrx4
+
 Sample Input
 5
-7 
--2 
-4 
-1 
-3
+7 -2 4 1 3
 
 Sample Output
 -2
@@ -21,7 +19,7 @@ import java.util.*;
 
 public class Main {
 
-  // count sort is applied when arr size is large but range of values in small
+  // count sort is applied when array size is large but range of values is small
   public static void countSort(int[] arr, int min, int max) {
     int n = arr.length;
 
@@ -41,7 +39,7 @@ public class Main {
 
     int sortedArr[] = new int[n];
 
-    // stable sorting (filling 'sortedArr' arr)
+    // stable sorting (filling 'sortedArr' array)
     for (int i = n - 1; i >= 0; i--) {
       int elementIndex = arr[i] - min;
       int index = freqPrefixArr[elementIndex] - 1;

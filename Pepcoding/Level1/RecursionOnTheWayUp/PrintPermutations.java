@@ -1,4 +1,6 @@
-/* 
+/*
+
+Reference Video - https://youtu.be/K5xJXbnYMBc
 
 Sample Input
 abc
@@ -33,7 +35,8 @@ public class Main {
     //   char ch = str.charAt(i);
     //   StringBuilder sb = new StringBuilder(str);
     //   sb.deleteCharAt(i);
-    //   printPermutations(sb.toString(), permutation + ch);
+    //   String restOfString = sb.toString();
+    //   printPermutations(restOfString, permutation + ch);
     // }
   }
 
