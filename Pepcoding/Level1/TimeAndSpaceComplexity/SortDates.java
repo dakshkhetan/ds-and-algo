@@ -27,13 +27,13 @@ public class Main {
     countSort(arr, 1, 10000, 2501); // year
   }
 
-  public static void countSort(String[] arr, int div, int mod, int range) {
+  private static void countSort(String[] arr, int div, int mod, int range) {
     int n = arr.length;
     int freqPrefixArr[] = new int[range];
 
     // storing frequency of each element in given 'arr'
     for (int i = 0; i < n; i++) {
-      int val = Integer.parseInt(arr[i], 10);
+      int val = Integer.parseInt(arr[i], 10); // 'decimal' number system
       int elementIndex = (val / div) % mod;
       freqPrefixArr[elementIndex]++;
     }
@@ -45,9 +45,9 @@ public class Main {
 
     String sortedArr[] = new String[n];
 
-    // stable sorting (filling 'sortedArr' arr)
+    // stable sorting (filling 'sortedArr' array)
     for (int i = n - 1; i >= 0; i--) {
-      int val = Integer.parseInt(arr[i], 10); // 'decimal' number system
+      int val = Integer.parseInt(arr[i], 10);
       int elementIndex = (val / div) % mod;
       int index = freqPrefixArr[elementIndex] - 1;
 

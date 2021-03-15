@@ -2,11 +2,7 @@
 
 Sample Input:
 5
-37 
-162 
-74 
-341 
-9
+37 162 74 341 9
 
 Sample Output:
 After sorting on 1 place -> 341 162 74 37 9 
@@ -23,19 +19,19 @@ public class Main {
   public static void radixSort(int[] arr) {
     // find the largest element in array
     int max = Integer.MIN_VALUE;
-    for (int val : arr) {
-      max = Math.max(val, max);
+    for (int num : arr) {
+      max = Math.max(num, max);
     }
 
     int exponent = 1; // one's place
     while (exponent <= max) {
-      // perform count sorting of nth (exponent) place of all elements
+      // perform count-sorting of nth (exponent) place of all elements
       countSort(arr, exponent);
       exponent *= 10;
     }
   }
 
-  public static void countSort(int[] arr, int exp) {
+  private static void countSort(int[] arr, int exp) {
     int n = arr.length;
 
     int range = 10; // number of digits
@@ -54,7 +50,7 @@ public class Main {
 
     int sortedArr[] = new int[n];
 
-    // stable sorting (filling 'sortedArr' arr)
+    // stable sorting (filling 'sortedArr' array)
     for (int i = n - 1; i >= 0; i--) {
       int elementIndex = (arr[i] / exp) % 10; // extract digit
       int index = freqPrefixArr[elementIndex] - 1;
@@ -82,7 +78,6 @@ public class Main {
     Scanner s = new Scanner(System.in);
 
     int n = s.nextInt();
-
     int arr[] = new int[n];
     for (int i = 0; i < n; i++) {
       arr[i] = s.nextInt();

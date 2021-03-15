@@ -33,17 +33,16 @@ public class Main {
       char ch = str.charAt(i);
 
       if (ch == '(' || isOperator(ch)) {
+        // we are NOT pushing operands into stack
+        // ONLY '(' and operators
         st.push(ch);
       } else if (ch == ')') {
-        boolean hasOperator = false;
+        if (st.peek() == '(') {
+          return true; // redundant bracket
+        }
 
         while (!st.isEmpty() && st.peek() != '(') {
           st.pop();
-          hasOperator = true;
-        }
-
-        if (!hasOperator) {
-          return true; // redundant
         }
 
         if (!st.isEmpty()) {
@@ -66,13 +65,16 @@ public class Main {
         st.push(ch);
       } else {
         if (st.peek() == '(') {
-          return true; // redundant
+          return true; // redundant bracket
         }
 
-        while (st.peek() != '(') {
+        while (!st.isEmpty() && st.peek() != '(') {
           st.pop();
         }
-        st.pop();
+
+        if (!st.isEmpty()) {
+          st.pop();
+        }
       }
     }
 
@@ -86,6 +88,7 @@ public class Main {
 
     // boolean result = duplicateBrackets(str);
     boolean result = checkRedundantBrackets(str);
+
     System.out.println(result);
   }
 

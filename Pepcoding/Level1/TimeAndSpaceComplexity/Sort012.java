@@ -2,16 +2,7 @@
 
 Sample Input:
 10
-1
-0
-2
-2
-1
-0
-2
-1
-0
-2
+1 0 2 2 1 0 2 1 0 2
 
 Sample Output:
 Swapping index 1 and index 0
@@ -39,10 +30,10 @@ import java.util.*;
 public class Main {
 
   public static void sort012(int[] arr) {
-    // i to k-1 -> All Unknowns
-    // k to n-1 -> All Two's
-    // 0 to j-1 -> All Zeroes'
-    // j to i-1 -> All Ones'
+    // i to k-1 -> all unknowns
+    // k to n-1 -> all two's
+    // 0 to j-1 -> all zeroes'
+    // j to i-1 -> all ones'
 
     int n = arr.length;
     int i = 0;
@@ -63,7 +54,7 @@ public class Main {
     }
   }
 
-  public static void swap(int[] arr, int i, int j) {
+  private static void swap(int[] arr, int i, int j) {
     System.out.println("Swapping index " + i + " and index " + j);
     int temp = arr[i];
     arr[i] = arr[j];

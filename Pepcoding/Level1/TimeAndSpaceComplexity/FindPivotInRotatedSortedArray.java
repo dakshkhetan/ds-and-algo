@@ -1,16 +1,10 @@
 /*
 
+Reference Video - https://youtu.be/vF7gk4iaklA
+
 Sample Input
 9
-15
-16
-19
-21
-23
-24
-1
-2
-12
+15 16 19 21 23 24 1 2 12
 
 Sample Output
 1

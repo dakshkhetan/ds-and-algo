@@ -2,18 +2,7 @@
 
 Sample Input
 12
-9 
--48 
-100 
-43 
-84 
-74 
-86 
-34 
--37 
-60 
--29 
-44
+9 -48 100 43 84 74 86 34 -37 60 -29 44
 160
 
 Sample Output
@@ -49,7 +38,6 @@ public class Main {
     Scanner s = new Scanner(System.in);
 
     int n = s.nextInt();
-
     int[] arr = new int[n];
     for (int i = 0; i < n; i++) {
       arr[i] = s.nextInt();
