@@ -1,12 +1,10 @@
 /*
 
+Reference Video - https://youtu.be/rSf9vPtKcmI
+
 Sample Input
 5
-5
-3
-8
--2
-7
+5 3 8 -2 7
 
 Sample Output
 8
@@ -21,6 +19,7 @@ import java.util.*;
 
 public class Main {
 
+  // Time Complexity: O(n)  [refer video for explanation]
   public static int[] nextGreaterElementToRight(int[] arr) {
     int n = arr.length;
     int ans[] = new int[n];

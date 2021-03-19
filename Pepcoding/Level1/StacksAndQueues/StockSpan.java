@@ -2,15 +2,7 @@
 
 Sample Input
 9
-2
-5
-9
-3
-1
-12
-6
-8
-7
+2 5 9 3 1 12 6 8 7
 
 Sample Output
 1
