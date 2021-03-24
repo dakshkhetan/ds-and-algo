@@ -1,10 +1,17 @@
 /*
 
-Sample Input
-2 + (5 - 3 * 6 / 2)
+Sample Input 1:
+2 * (5+ 5*2) / 3+(6/2+8)
 
-Sample Output
--2
+Sample Output 1:
+21
+
+
+Sample Input 2:
+( 15-4 / 2 )
+
+Sample Output 2:
+13
 
 */
 
@@ -12,78 +19,74 @@ import java.util.*;
 
 public class Main {
 
-  private static boolean isOperator(char ch) {
-    if (ch == '/' || ch == '*' || ch == '+' || ch == '-') {
-      return true;
-    }
-    return false;
-  }
+  // Recursive Solution:
+  // Time and Space: O(N)
 
-  private static int priority(char ch) {
-    if (ch == '/') {
-      return 2;
-    } else if (ch == '*') {
-      return 2;
-    } else if (ch == '+') {
-      return 1;
-    } else { // ch == '-'
-      return 1;
-    }
-  }
-
-  private static int operation(int v1, int v2, char operator) {
-    if (operator == '/') {
-      return v1 / v2;
-    } else if (operator == '*') {
-      return v1 * v2;
-    } else if (operator == '+') {
-      return v1 + v2;
-    } else { // operator == '-'
-      return v1 - v2;
-    }
-  }
-
-  private static void compute(Stack<Integer> operands, Stack<Character> operators) {
-    char operator = operators.pop();
-    int v2 = operands.pop();
-    int v1 = operands.pop();
-
-    int result = operation(v1, v2, operator);
-    operands.push(result);
-  }
+  static int i = 0;
 
   public static int infixEvaluation(String expression) {
-    Stack<Integer> operands = new Stack<>();
-    Stack<Character> operators = new Stack<>();
+    if (expression == null || expression.length() == 0) {
+      return 0;
+    }
 
-    for (int i = 0; i < expression.length(); i++) {
+    int result = 0;
+    int num = 0;
+    int value = 0;
+
+    char operator = '+';
+
+    for (; i < expression.length();) {
       char ch = expression.charAt(i);
 
-      if (ch == '(') {
-        operators.push(ch);
-      } else if (Character.isDigit(ch)) {
-        // int num = ch - '0';
-        int num = Character.getNumericValue(ch);
-        operands.push(num);
+      i++; // if we increment 'i' inside 'for' loop and NOT here then,
+           // when we call recursion below, i would not be incremented,
+           // and it will result in infinite calls (Stack Overflow Error)
+
+      if (Character.isDigit(ch)) {
+        // num = (10 * num) + (ch - '0');
+        num = (10 * num) + Character.getNumericValue(ch);
+      } else if (ch == '(') {
+        // start new context for new set of paranthesis
+        num = infixEvaluation(expression);
       } else if (ch == ')') {
-        while (operators.peek() != '(') {
-          compute(operands, operators);
+        // stop current context
+        break;
+      } else if (ch == ' ') {
+        // skip spaces
+        continue;
+      } else {
+        // ch is an operator (+, -, * or /)
+
+        // compute the value of last context (i.e. before this operator 'ch')
+        value = compute(value, num, operator);
+
+        if (ch == '+' || ch == '-') {
+          result += value;
+          value = 0;
         }
-        operators.pop();
-      } else if (isOperator(ch)) {
-        while (!operators.isEmpty() && operators.peek() != '(' && priority(ch) <= priority(operators.peek())) {
-          compute(operands, operators);
-        }
-        operators.push(ch);
+
+        num = 0; // reset num
+        operator = ch; // update operator
       }
     }
 
-    while (!operators.isEmpty()) {
-      compute(operands, operators);
-    }
+    // add last value to result
+    value = compute(value, num, operator);
+    result += value;
 
-    int result = operands.peek();
     return result;
+  }
+
+  private static int compute(int value, int num, char operator) {
+    if (operator == '+') {
+      return value + num;
+    } else if (operator == '-') {
+      return value - num;
+    } else if (operator == '*') {
+      return value * num;
+    } else { // operator == '/'
+      return value / num;
+    }
   }
 
   public static void main(String[] args) {
