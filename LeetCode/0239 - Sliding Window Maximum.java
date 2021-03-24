@@ -1,33 +1,28 @@
-/* 
+/*
 
-Sample Input
-17
-2 9 3 8 1 7 12 6 14 4 32 0 7 19 8 12 6
-4
+Sample Input:
+nums = [1,3,-1,-3,5,3,6,7]
+k = 3
 
-Sample Output
-9
-9
-8
-12
-12
-14
-14
-32
-32
-32
-32
-19
-19
-19
+Sample Output:
+[3,3,5,5,6,7]
+
+Explanation:
+Window position                Max
+---------------               -----
+[1  3  -1] -3  5  3  6  7       3
+ 1 [3  -1  -3] 5  3  6  7       3
+ 1  3 [-1  -3  5] 3  6  7       5
+ 1  3  -1 [-3  5  3] 6  7       5
+ 1  3  -1  -3 [5  3  6] 7       6
+ 1  3  -1  -3  5 [3  6  7]      7
 
 */
 
-import java.util.*;
+class Solution {
 
-public class Main {
+  public int[] maxSlidingWindow(int[] nums, int k) {
 
-  public static int[] slidingWindowMaximum(int[] nums, int k) {
     int n = nums.length;
     int windowSize = k;
 
@@ -62,23 +57,7 @@ public class Main {
     }
 
     return ans;
-  }
 
-  public static void main(String[] args) {
-    Scanner s = new Scanner(System.in);
-
-    int n = s.nextInt();
-    int arr[] = new int[n];
-    for (int i = 0; i < n; i++) {
-      arr[i] = s.nextInt();
-    }
-
-    int k = s.nextInt();
-
-    int result[] = slidingWindowMaximum(arr, k);
-    for (int num : result) {
-      System.out.println(num);
-    }
   }
 
 }
