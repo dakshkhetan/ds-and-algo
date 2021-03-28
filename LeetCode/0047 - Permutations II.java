@@ -1,12 +1,10 @@
 /*
 
-Reference Video - https://youtu.be/R3Sm9V2OSCo
-
 Sample Input:
-nums = [1,2,3]
+nums = [1,1,2]
 
 Sample Output:
-[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+[[1,1,2],[1,2,1],[2,1,1]]
 
 */
 
@@ -15,7 +13,10 @@ class Solution {
   // Time Complexity: O(N*logN) + O(N! * N)
   // Space Complexity: O(N + (N! * N))
 
-  public List<List<Integer>> permute(int[] nums) {
+  public List<List<Integer>> permuteUnique(int[] nums) {
+
+    // sort the given array first to identify duplicate elements
+    Arrays.sort(nums);
 
     List<List<Integer>> permutations = new ArrayList<>();
     boolean visited[] = new boolean[nums.length];
@@ -30,13 +31,18 @@ class Solution {
       boolean[] visited) {
 
     if (currentPermutation.size() == nums.length) {
-      permutations.add(new ArrayList<>(currentPermutation)); // Important: add using the 'new' keyword
+      permutations.add(new ArrayList<>(currentPermutation));
       return;
     }
 
     for (int i = 0; i < nums.length; i++) {
       // check if current num is visited or not to prevent infinite loop
-      if (visited[i] == true) {
+      if (visited[i]) {
+        continue;
+      }
+
+      // skip duplicates
+      if (i != 0 && nums[i] == nums[i - 1] && !visited[i - 1]) {  // important
         continue;
       }
 
