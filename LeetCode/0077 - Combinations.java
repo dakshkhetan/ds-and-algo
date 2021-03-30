@@ -43,18 +43,18 @@ class Solution {
 
   public List<List<Integer>> combineOptimised(int n, int k) {
 
-    List<List<Integer>> combinations = new LinkedList();
+    List<List<Integer>> combinations = new ArrayList<>();
 
     if (n < k || k == 0) {
       return combinations;
     }
 
     // include number 'n' in current combination
-    combinations = combine(n - 1, k - 1);
+    combinations = combineOptimised(n - 1, k - 1);
 
     // base case
     if (combinations.isEmpty()) {
-      combinations.add(new LinkedList<>());
+      combinations.add(new ArrayList<>());
     }
 
     for (List<Integer> combination : combinations) {
@@ -62,7 +62,7 @@ class Solution {
     }
 
     // NOT include number 'n' in current combination
-    combinations.addAll(combine(n - 1, k));
+    combinations.addAll(combineOptimised(n - 1, k));
 
     return combinations;
 
