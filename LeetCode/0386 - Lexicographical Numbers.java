@@ -38,7 +38,7 @@ class Solution {
 
     result.add(i);
 
-    for (int j = 0; j < 10; j++) {
+    for (int j = 0; j <= 9; j++) {
       dfs(n, result, 10 * i + j); // important
     }
   }
