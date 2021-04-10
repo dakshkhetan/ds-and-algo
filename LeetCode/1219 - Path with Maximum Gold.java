@@ -52,18 +52,19 @@ class Solution {
     // but it'll increase space complexity
     arr[row][col] = 0;
 
-    int collectUp = helper(arr, row - 1, col);
-    int collectRight = helper(arr, row, col + 1);
-    int collectDown = helper(arr, row + 1, col);
-    int collectLeft = helper(arr, row, col - 1);
+    int goldPathSumUp = helper(arr, row - 1, col);
+    int goldPathSumRight = helper(arr, row, col + 1);
+    int goldPathSumDown = helper(arr, row + 1, col);
+    int goldPathSumLeft = helper(arr, row, col - 1);
 
     // on backtracking, mark unvisited i.e. restore the current cell gold amount
     arr[row][col] = goldAmount;
 
-    // now, return the sum of current cell's gold amount and the
-    // adjacent cell whose gold amount is maximum from all 4 directions
+    // now, add current cell's gold amount to the recursive path
+    // with maximum gold path sum (from all 4 directions)
+    int goldPathSum = goldAmount + maxOf(goldPathSumUp, goldPathSumRight, goldPathSumDown, goldPathSumLeft);
 
-    return goldAmount + maxOf(collectUp, collectRight, collectDown, collectLeft);
+    return goldPathSum;
 
   }
 
