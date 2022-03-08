@@ -16,6 +16,8 @@ Range constraint:
 
 class Solution {
 
+  // Time Complexity: O(N)
+  // Space Complexity: O(1)
   public int romanToInt(String str) {
     int num = 0;
     int i = 0;
@@ -51,20 +53,20 @@ class Solution {
 
   private int toInt(char num) {
     switch (num) {
-    case 'I':
-      return 1;
-    case 'V':
-      return 5;
-    case 'X':
-      return 10;
-    case 'L':
-      return 50;
-    case 'C':
-      return 100;
-    case 'D':
-      return 500;
-    default:
-      return 1000;
+      case 'I':
+        return 1;
+      case 'V':
+        return 5;
+      case 'X':
+        return 10;
+      case 'L':
+        return 50;
+      case 'C':
+        return 100;
+      case 'D':
+        return 500;
+      default: // 'M'
+        return 1000;
     }
   }
 

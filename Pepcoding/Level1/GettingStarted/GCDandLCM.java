@@ -1,5 +1,7 @@
 /* 
 
+Reference Video - https://youtu.be/ZtDeDD1VYLk
+
 Sample Input
 36
 24
@@ -23,14 +25,13 @@ public class Main {
     int n1 = num1;
     int n2 = num2;
 
-    int r = n1 % n2;
-    while (r != 0) {
-      r = n1 % n2;
+    while (n1 % n2 != 0) {
+      int r = n1 % n2;
       n1 = n2;
       n2 = r;
     }
 
-    int hcf = n1;
+    int hcf = n2;
     int lcm = (num1 * num2) / hcf;
 
     System.out.println(hcf);

@@ -1,4 +1,6 @@
-/* 
+/*
+
+Reference Video - https://youtu.be/iKSI_9NHR1M
 
 Sample Input
 3
@@ -24,7 +26,7 @@ public class Main {
 
   public static void main(String[] args) {
     Scanner s = new Scanner(System.in);
-    
+
     int n = s.nextInt();
     int arr[] = new int[n];
     for (int i = 0; i < n; i++) {
@@ -38,9 +40,9 @@ public class Main {
       String subset = "";
 
       for (int j = n - 1; j >= 0; j--) {
-        int r = num % 2;
+        int rem = num % 2;
 
-        if (r == 0) {
+        if (rem == 0) {
           subset = "-" + "	" + subset; // important
         } else {
           subset = arr[j] + "	" + subset; // important
@@ -52,5 +54,5 @@ public class Main {
       System.out.println(subset);
     }
   }
-  
+
 }

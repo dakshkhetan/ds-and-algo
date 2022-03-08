@@ -1,5 +1,3 @@
-import java.util.*;
-
 /* 
 
 Sample Input
@@ -18,6 +16,8 @@ Sample Output
 34
 
 */
+
+import java.util.*;
 
 public class Main {
 

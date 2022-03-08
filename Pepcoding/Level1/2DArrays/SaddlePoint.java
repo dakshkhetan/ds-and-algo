@@ -51,15 +51,15 @@ public class Main {
         }
       }
 
-      boolean flag = true;
+      boolean isMaxColElement = true;
       for (int k = 0; k < n; k++) {
         if (arr[k][colIndex] > minRowElement) {
-          flag = false;
+          isMaxColElement = false;
           break;
         }
       }
 
-      if (flag) {
+      if (isMaxColElement) {
         return minRowElement;
       }
     }
