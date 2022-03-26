@@ -41,7 +41,6 @@ class Solution {
   // Time Complexity: O(1)
   // Space Complexity: O(1)
   public int hammingWeightDirectMethod(int n) {
-    // here you simply call bitCount method to count no of 1
     int count = Integer.bitCount(n);
     return count;
   }
@@ -49,7 +48,7 @@ class Solution {
   // Time Complexity: O(N)
   // Space Complexity: O(1)
   public int hammingWeightBruteForce(int n) {
-    // first we need to convert no to binary string
+    // first, convert n to binary string
     String str = Integer.toBinaryString(n); // using in-built method
 
     int count = 0;
